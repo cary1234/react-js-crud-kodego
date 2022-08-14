@@ -3,9 +3,7 @@ import { Container, Table, Row, Col, Modal, Button, Form } from 'react-bootstrap
 
 class MyForm extends Component {
     state = {
-        form: { first_name: '', last_name: '', email: '', isEdit: false },
-        btnName: "Save",
-        btnClass: "ui primary button submit-button",
+        form: { employee_id: '', first_name: '', last_name: '', email: '', password: '', privilege: '', status: '', isEdit: false },
         isOpenAddModal: false,
         isOpenEditModal: false
     };
@@ -23,10 +21,7 @@ class MyForm extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps !== this.props && !this.isEmpty(this.props.customer)) {
             this.setState({
-                form: { ...this.props.customer, isEdit: true },
-                btnName: "Update",
-                btnClass: "ui orange button submit-button",
-                isOpenEditModal: true
+                form: { ...this.props.customer, isEdit: true }
             });
             //console.log("Update");
         }
@@ -41,7 +36,6 @@ class MyForm extends Component {
     }
 
     onFormSubmit = (event) => {
-
         this.closeModalAddModal();
         this.closeModalEditModal();
         //prevent form submit
@@ -54,26 +48,12 @@ class MyForm extends Component {
             this.props.onFormSubmit(this.state.form)
         }
 
-        //change the button to save
-        this.setState({
-            btnName: "Save",
-            btnClass: "ui primary button submit-button"
-        })
-
-        //clear form fields
-        this.clearFofrmFields();
     };
 
     formValidation = () => {
         return true;
     }
 
-    clearFofrmFields = () => {
-        this.setState({
-            form: { first_name: '', last_name: '', email: '', isEdit: false }
-        });
-
-    }
 
     render() {
         return (
@@ -97,7 +77,7 @@ class MyForm extends Component {
                                     </Col>
                                 </Row>
 
-                                <Row>
+                                {/* <Row>
                                     <Col xs={6} md={{ span: 5 }} className="mt-1">
                                         <label className="label mt-1 ">Employee ID: </label>
                                     </Col>
@@ -111,8 +91,24 @@ class MyForm extends Component {
                                             value={this.state.form.employee_id}
                                         />
                                     </Col>
+                                </Row> */}
+
+
+                                {/* Employee ID */}
+                                <Row>
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+                                        <Form.Control
+                                            type="text"
+                                            className="input text-center"
+                                            name="employee_id"
+                                            placeholder="Employee ID"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.employee_id}
+                                        />
+                                    </Col>
                                 </Row>
 
+                                {/* 
                                 <Row>
                                     <Col xs={6} md={{ span: 5 }} className="mt-1">
                                         <label className="label mt-1 ">First Name: </label>
@@ -127,67 +123,90 @@ class MyForm extends Component {
                                             value={this.state.form.first_name}
                                         />
                                     </Col>
+                                </Row> */}
+
+                                {/* First Name */}
+                                <Row>
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+                                        <Form.Control
+                                            type="text"
+                                            className="input text-center"
+                                            name="first_name"
+                                            placeholder="First Name"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.first_name}
+                                        />
+                                    </Col>
                                 </Row>
 
+                                {/* Last Name */}
                                 <Row>
-                                    <Col xs={6} md={{ span: 5 }} className="mt-1">
-                                        <label className="label mt-1">
-                                            Last Name:
-                                        </label>
-                                    </Col>
-                                    <Col xs={6} md={{ span: 7 }} className="mt-1">
-                                        <input
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+                                        <Form.Control
                                             type="text"
                                             className="input text-center"
                                             name="last_name"
-                                            placeholder="Dela Cruz"
+                                            placeholder="Last Name"
                                             onChange={this.handleChange}
                                             value={this.state.form.last_name}
                                         />
                                     </Col>
                                 </Row>
 
+                                {/* Email */}
                                 <Row>
-                                    <Col xs={6} md={{ span: 5 }} className="mt-1">
-                                        <label className="label mt-1">
-                                            Company Email:
-                                        </label>
-                                    </Col>
-                                    <Col xs={6} md={{ span: 7 }} className="mt-1">
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
                                         <Form.Control
                                             type="email"
                                             className="input text-center"
                                             name="email"
-                                            placeholder="j.delacruz@spediph.com"
+                                            placeholder="Company Email"
                                             onChange={this.handleChange}
                                             value={this.state.form.email}
                                         />
-
                                     </Col>
                                 </Row>
 
-                                {/* Attendance Type */}
+                                {/* Password */}
+                                <Row>
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+                                        <Form.Control
+                                            type="password"
+                                            className="input text-center"
+                                            name="password"
+                                            placeholder="Temporary Password"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.password}
+                                        />
+                                    </Col>
+                                </Row>
+
+                                {/* Privilege */}
                                 <Row>
                                     <Col xs={12} md={{ span: 12 }} className="mt-1">
                                         <select
                                             className="form-control form-select text-center"
-                                            name="type"
+                                            name="privilege"
                                             onChange={this.handleChange}
-                                            value={this.state.form.type}
+                                            value={this.state.form.privilege}
                                         >
                                             <option
                                                 value=""
                                                 selected
                                                 disabled>
-                                                Attendance Type
+                                                Privilege
                                             </option>
                                             <option
-                                                value="Time In">
-                                                Time In
+                                                value="Super Admin">
+                                                Super Admin
                                             </option>
                                             <option
-                                                value="Time Out">
-                                                Time Out
+                                                value="Admin">
+                                                Admin
+                                            </option>
+                                            <option
+                                                value="Regular">
+                                                Regular
                                             </option>
                                         </select>
                                     </Col>

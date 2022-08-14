@@ -7,7 +7,7 @@ import axios from "axios";
 
 class Login extends Component {
     state = {
-        form: { id: '', employee_id: '', first_name: '', last_name: '', email: '', password: '', is_admin: '' },
+        form: { id: '', employee_id: '', first_name: '', last_name: '', email: '', password: '', privilege: '' },
     };
 
     //Note: Linked to the input fields of firstName, lastName and email
@@ -38,7 +38,7 @@ class Login extends Component {
     }
 
     render() {
-        const { id, employee_id, first_name, last_name, email, password, is_admin } = this.props.login;
+        const { id, employee_id, first_name, last_name, email, password, privilege } = this.props.login;
         return (
             <>
                 <Container>

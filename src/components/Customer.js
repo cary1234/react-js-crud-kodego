@@ -19,7 +19,7 @@ class Customer extends Component {
     }
 
     render() {
-        const { id, employee_id, first_name, last_name, email, password, privilege } = this.props.customer;
+        const { id, employee_id, first_name, last_name, email, password, privilege, status } = this.props.customer;
         return (
             <>
                 <tr>

@@ -30,7 +30,9 @@ class Attendance extends Component {
             <>
                 <tr>
                     <td>
-                        {new Date(created_at).toLocaleString()}
+                        {
+                            new Date(created_at).toLocaleString()
+                        }
                     </td>
                     <td>
                         {real_location}

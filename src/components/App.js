@@ -147,10 +147,9 @@ class App extends Component {
             this.setState({ isLoginValid: true });
             localStorage.setItem('localStorageIsLoginValid', true);
 
-            //Get the is_admin value of the logged user
+            //Get the privilege value of the logged user
             const obj = JSON.stringify(logins.data);
             var stringify = JSON.parse(obj);
-
 
             console.log("Data: " + obj)
             console.log("Stringify: " + stringify)

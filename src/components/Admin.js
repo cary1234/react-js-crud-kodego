@@ -66,9 +66,13 @@ class Admin extends Component {
     createCustomer = async (data) => {
         this.setState({ loader: true });
         await axios.post(this.state.urlCustomers, {
+            employee_id: data.employee_id,
             first_name: data.first_name,
             last_name: data.last_name,
-            email: data.email
+            email: data.email,
+            password: data.password,
+            privilege: data.privilege,
+            status: data.status,
         });
         this.getCustomers();
     }
