@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Container, Table, Col, } from 'react-bootstrap';
 import Attendance from './Attendance'
 
+
+import PaginationAttendance from './PaginationAttendance'
+
 class AttendanceList extends Component {
 
     onDeleteAttendance = id => {
@@ -50,6 +53,7 @@ class AttendanceList extends Component {
 
 
 
+                    <PaginationAttendance />
 
                 </Container>
 

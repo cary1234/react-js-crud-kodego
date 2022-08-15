@@ -16,9 +16,6 @@ class Admin extends Component {
         isOpen: false
     };
 
-    openModal = () => this.setState({ isOpen: true });
-    closeModal = () => this.setState({ isOpen: false });
-
     componentDidMount() {
         this.getCustomers();
         console.log("component did mount: " + this.getCustomers());
@@ -51,9 +48,13 @@ class Admin extends Component {
         //clear customer obj
         this.setState({ customer: {}, loader: true })
         await axios.put(`${this.state.urlCustomers}/${data.id}`, {
+            employee_id: data.employee_id,
             first_name: data.first_name,
             last_name: data.last_name,
-            email: data.email
+            email: data.email,
+            password: data.password,
+            privilege: data.privilege,
+            status: data.status
         });
         this.getCustomers();
     };
@@ -72,12 +73,12 @@ class Admin extends Component {
             email: data.email,
             password: data.password,
             privilege: data.privilege,
-            status: data.status,
+            status: 'Active',
         });
         this.getCustomers();
     }
 
-    onFormSubmit = (data) => {
+    onFormSubmitCustomer = (data) => {
         // console.log('app', data);
         if (data.isEdit) {
             //if the edit is true
@@ -95,7 +96,7 @@ class Admin extends Component {
     render() {
         return (
             <>
-                <MyForm customer={this.state.customer} onFormSubmit={this.onFormSubmit} />
+                <MyForm customer={this.state.customer} onFormSubmitCustomer={this.onFormSubmitCustomer} />
                 {
                     this.state.loader ? <Loader /> : ""
                 }

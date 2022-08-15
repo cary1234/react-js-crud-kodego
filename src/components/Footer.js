@@ -11,7 +11,10 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 const Footer = () => {
     return (
         <>
-            <footer className="pb-2 pt-2"
+
+
+            {/* hide when <= medium */}
+            <footer className="pb-2 pt-2 fixed-bottom d-none d-lg-block"
                 style={{
                     backgroundColor: "#add8e6"
                 }}

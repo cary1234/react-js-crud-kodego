@@ -3,13 +3,16 @@ import Customer from "./Customer";
 import { Container, Table, Row, Col, Modal, Button } from 'react-bootstrap';
 
 
+import PaginationAttendance from './PaginationAttendance'
+
+
 class CustomerList extends Component {
 
-    onDelete = id => {
+    onDeleteCustomer = id => {
         console.log('customer list ', id);
         this.props.onDeleteAttendance(id);
     }
-    onEdit = data => {
+    onEditCustomer = data => {
         console.log('customer list ', data);
         this.props.onEditAttendance(data);
     }
@@ -49,8 +52,8 @@ class CustomerList extends Component {
                                             <Customer
                                                 customer={customer}
                                                 key={customer.id}
-                                                onDelete={this.onDelete}
-                                                onEdit={this.onEdit}
+                                                onDeleteCustomer={this.onDeleteCustomer}
+                                                onEditCustomer={this.onEditCustomer}
                                             />
                                         )
                                     })}
@@ -58,6 +61,9 @@ class CustomerList extends Component {
                             </tbody>
                         </Table>
                     </Col>
+
+
+                    <PaginationAttendance />
                 </Container>
 
             </>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Modal, FloatingLabel, Form } from 'react-bootstrap';
 
 class Attendance extends Component {
     state = {
@@ -67,64 +67,104 @@ class Attendance extends Component {
                     centered
                 >
                     <Modal.Body>
-                        <Container fluid className="text-center">
+                        <Container fluid className="">
                             <form>
                                 <Row>
                                     <Col xs={6} md={{ span: 12 }} className="mt-1 mb-2">
-                                        <label className="label">
-                                            <h4> Are you sure you want to permanently delete this record?</h4>
+                                        <label className="label text-center">
+                                            <h5> Are you sure you want to permanently delete this record?</h5>
                                         </label>
                                     </Col>
                                 </Row>
 
+
+                                {/* Timestamp */}
                                 <Row>
-                                    <Col xs={6} md={{ span: 3, offset: 2 }} className="mt-1">
-                                        <label className="label">First Name: </label>
-                                    </Col>
-                                    <Col xs={6} md={{ span: 4 }} className="mt-1">
-                                        <input
-                                            className="input text-center"
-                                            type="text"
-                                            name="created_at"
-                                            value={new Date(created_at).toLocaleString()}
-                                            disabled
-                                        />
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+                                        <FloatingLabel
+                                            label="Timestamp"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                className="mb-1 text-center"
+                                                name="created_at"
+                                                value={new Date(created_at).toLocaleString()}
+                                                disabled
+                                            />
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
 
+                                {/* Detected Location */}
                                 <Row>
-                                    <Col xs={6} md={{ span: 3, offset: 2 }} className="mt-1">
-                                        <label className="label">
-                                            Detected Location:
-                                        </label>
-                                    </Col>
-                                    <Col xs={6} md={{ span: 4 }} className="mt-1">
-                                        <input
-                                            className="input text-center"
-                                            type="text"
-                                            name="real_location"
-                                            value={real_location}
-                                            disabled
-                                        />
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+                                        <FloatingLabel
+                                            label="Detected Location"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                className="mb-1 text-center"
+                                                name="real_location"
+                                                value={real_location}
+                                                disabled
+                                            />
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
 
+
+
+                                {/* Site Location */}
                                 <Row>
-                                    <Col xs={6} md={{ span: 3, offset: 2 }} className="mt-1">
-                                        <label className="label">
-                                            Site Location:
-                                        </label>
-                                    </Col>
-                                    <Col xs={6} md={{ span: 4 }} className="mt-1">
-                                        <input
-                                            className="input text-center"
-                                            type="text"
-                                            name="site_location"
-                                            value={site_location}
-                                            disabled
-                                        />
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+                                        <FloatingLabel
+                                            label="Site Location"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                className="mb-1 text-center"
+                                                name="site_location"
+                                                value={site_location}
+                                                disabled
+                                            />
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
+
+                                {/* Attendance Type */}
+                                <Row>
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+                                        <FloatingLabel
+                                            label="Attendance Type"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                className="mb-1 text-center"
+                                                name="type"
+                                                value={type}
+                                                disabled
+                                            />
+                                        </FloatingLabel>
+                                    </Col>
+                                </Row>
+
+                                {/* Remarks */}
+                                <Row>
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+                                        <FloatingLabel
+                                            label="Remarks"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                className="mb-1 text-center"
+                                                name="remarks"
+                                                value={remarks}
+                                                disabled
+                                            />
+                                        </FloatingLabel>
+                                    </Col>
+                                </Row>
+
 
                                 <Row>
                                     <Col xs={6} md={{ span: 3, offset: 3 }} className="mt-1">

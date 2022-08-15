@@ -14,7 +14,6 @@ import Footer from './Footer'
 import MyAttendanceForm from './MyAttendanceForm'
 import AttendanceList from './AttendanceList'
 import Loader from "./Loader";
-import PaginationAttendance from './PaginationAttendance'
 
 
 
@@ -117,7 +116,7 @@ class App extends Component {
         this.getAttendances();
     }
 
-    onFormSubmitAdd = (data) => {
+    onFormSubmitAttendance = (data) => {
         // console.log('app', data);
         if (data.isEdit) {
             //if the edit is true
@@ -221,14 +220,13 @@ class App extends Component {
                                             <Header />
                                             <MyAttendanceForm
                                                 attendance={this.state.attendance}
-                                                onFormSubmit={this.onFormSubmitAdd}
+                                                onFormSubmit={this.onFormSubmitAttendance}
                                             />
                                             <AttendanceList
                                                 attendances={this.state.attendances}
                                                 onDeleteAttendance={this.onDeleteAttendance}
                                                 onEditAttendance={this.onEditAttendance}
                                             />
-                                            <PaginationAttendance />
                                         </>}
                                 />
 
@@ -239,7 +237,6 @@ class App extends Component {
                                         <>
                                             <Header />
                                             <Admin />
-                                            <PaginationAttendance />
                                         </>}
                                 />
 
@@ -249,7 +246,6 @@ class App extends Component {
                                         <>
                                             <Header />
                                             <Admin />
-                                            <PaginationAttendance />
                                         </>}
                                 />
                                 {

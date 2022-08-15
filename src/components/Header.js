@@ -120,7 +120,7 @@ const Header = (props) => {
                             <Row>
                                 <Col xs={12} md={{ span: 12 }} className="mt-1 mb-2">
                                     <label className="label">
-                                        <h4> Are you sure you logout?</h4>
+                                        <h4> Are you sure you want sign out?</h4>
                                     </label>
                                 </Col>
                             </Row>

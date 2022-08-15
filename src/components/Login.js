@@ -1,6 +1,6 @@
 import loginPictture from '../assets/images/undraw_remotely_2j6y.svg';
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, FloatingLabel } from 'react-bootstrap';
 import logoUrl from '../assets/images/logo.png';
 import { React, Component } from "react";
 import axios from "axios";
@@ -42,15 +42,18 @@ class Login extends Component {
         return (
             <>
                 <Container>
-                    <Row className="d-none d-md-block mt-4 pt-4">
+                    <Row className="d-none d-md-block mt-2 pt-2">
                     </Row>
-                    <Row className="mt-4 pt-4">
+                    <Row className="d-none d-md-block mt-2 pt-2">
+                    </Row>
+                    <Row className="d-none d-md-block mt-2 pt-2">
+                    </Row>
+                    <Row className="">
                         <Col xs={12} md={{ span: 8, offset: 2 }} className="contents text-center">
                             <h3>
                                 <a className="navbar-brand">
                                     <img src={logoUrl} height="100" alt="SPEDI Logo" />
                                 </a>
-
                                 SPEDI Construction, Inc
                             </h3>
                         </Col>
@@ -65,30 +68,39 @@ class Login extends Component {
                                     <h5>Attendance Monitoring System</h5>
                                     <p className="mb-4">For all your technical concerns, kindly email the support team at <a href="mailto:support@spediph.com">support@spediph.com</a>.</p>
                                     <Form>
-                                        <Form.Group >
-                                            <Form.Label>Email address</Form.Label>
+
+                                        <FloatingLabel
+                                            controlId="floatingInputEmployeeID"
+                                            label="Company Email Address"
+                                            className="mb-1"
+                                        >
                                             <Form.Control
                                                 type="text"
-                                                className="input text-center"
                                                 name="email"
-                                                placeholder="Company Email"
+                                                placeholder='Company Email Address'
                                                 onChange={this.handleChange}
                                                 value={this.state.form.email}
                                             />
-                                        </Form.Group>
-                                        <Form.Group>
-                                            <Form.Label>Password</Form.Label>
+                                        </FloatingLabel>
+
+
+                                        <FloatingLabel
+                                            controlId="floatingInputEmployeeID"
+                                            label="Password"
+                                            className="mb-1"
+                                        >
                                             <Form.Control
                                                 type="password"
-                                                className="text-center"
                                                 name="password"
                                                 placeholder="Company Password"
                                                 onChange={this.handleChange}
                                                 value={this.state.form.password}
                                             />
-                                        </Form.Group>
+                                        </FloatingLabel>
 
-                                        <div className="d-grid mt-3 pb-5 mb-2">
+
+
+                                        <div className="d-grid mt-3 mb-3">
                                             <button type="button"
                                                 className="btn btn-outline-info"
                                                 onClick={this.getLogin}>

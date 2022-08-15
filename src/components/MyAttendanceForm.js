@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { Container, Table, Row, Col, Modal, Button, Form, InputGroup } from 'react-bootstrap';
+import { Container, Table, Row, Col, Modal, Button, Form, InputGroup, FloatingLabel } from 'react-bootstrap';
 import Clock from 'react-live-clock';
 import axios from 'axios';
 
@@ -111,20 +111,40 @@ class MyAttendanceForm extends Component {
                     keyboard={false}
                 >
                     <Modal.Body>
-                        <Container fluid className="text-center">
+                        <Container fluid className="">
                             <form>
 
-                                {/* Timestamp and Detected Location */}
+                                {/* Timestamp */}
                                 <Row>
-                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
-                                        <h1>
-                                            <Clock className='text-center' format={'MM/DD/YYYY h:mm:ss A'} ticking={true} timezone={'Asia/Singapore'} />
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1 text-center">
+                                        <h1 className="text-primary display-3">
+                                            <strong>
+                                                <Clock
+                                                    className='text-center'
+                                                    format={'MM/DD/YYYY h:mm:ss A'}
+                                                    ticking={true}
+                                                    timezone={'Asia/Singapore'}
+                                                />
+                                            </strong>
                                         </h1>
-                                        <h5>
-                                            {"Detected Location: " + this.state.real_location}
-                                        </h5>
                                     </Col>
                                 </Row>
+
+                                {/* Detected Location */}
+                                <FloatingLabel
+                                    controlId="floatingInputEmployeeID"
+                                    label="Detected Location"
+                                    className="mb-1"
+                                >
+                                    <Form.Control
+                                        type="text"
+                                        value={
+                                            (this.state.real_location == undefined) ? "Detecting Location..." : this.state.real_location
+                                        }
+                                        className='text-center'
+                                        disabled
+                                    />
+                                </FloatingLabel>
 
                                 {/* Site Location */}
                                 <Row>
@@ -227,15 +247,21 @@ class MyAttendanceForm extends Component {
                                 {/* Remarks */}
                                 <Row>
                                     <Col xs={12} md={{ span: 12 }} className="mt-1">
-                                        <InputGroup>
-                                            <InputGroup.Text>Remarks</InputGroup.Text>
+                                        <FloatingLabel
+                                            controlId="floatingInputEmployeeID"
+                                            label="Detected Location"
+                                            className="mb-1"
+                                        >
                                             <Form.Control
-                                                as="textarea"
+                                                type="text"
+
                                                 name="remarks"
                                                 onChange={this.handleChange}
                                                 value={this.state.form.remarks}
+                                                placeholder="Optional"
+                                                className="text-center"
                                             />
-                                        </InputGroup>
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
 
@@ -260,13 +286,13 @@ class MyAttendanceForm extends Component {
                     </Modal.Body>
                 </Modal>
 
-
-
                 {/* Edit Attendance Modal */}
                 <Modal show={this.state.isOpenEditModalAttendance}>
                     <Modal.Body>
-                        <Container fluid className="text-center">
+                        <Container fluid className="">
                             <form>
+
+                                {/* Description */}
                                 <Row>
                                     <Col xs={12} md={{ span: 12 }} className="mt-1 mb-2">
                                         <label className="label">
@@ -293,132 +319,143 @@ class MyAttendanceForm extends Component {
                                 {/* Detected Location */}
                                 <Row>
                                     <Col xs={12} md={{ span: 12 }} className="mt-1">
-                                        <InputGroup>
+                                        <FloatingLabel
+                                            controlId="floatingInputEmployeeID"
+                                            label="Detected Location"
+                                        >
                                             <Form.Control
-                                                className="text-center"
+                                                type="text"
+                                                className="mb-1 text-center"
                                                 name="real_location"
                                                 onChange={this.handleChange}
                                                 value={this.state.form.real_location}
-                                                placeholder="Detected Location"
                                             />
-                                        </InputGroup>
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
 
                                 {/* Site Location */}
                                 <Row>
                                     <Col xs={12} md={{ span: 12 }} className="mt-1">
-                                        <select
-                                            className="form-control form-select text-center"
-                                            name="site_location"
-                                            onChange={this.handleChange}
-                                            value={this.state.form.site_location}
-                                        >
-                                            <option
-                                                value=""
-                                                selected
-                                                disabled>
-                                                Site Location
-                                            </option>
-                                            <option
-                                                value="Office: Quezon City">
-                                                Office: Quezon City
-                                            </option>
-                                            <option
-                                                value="Office: Valenzuela City">
-                                                Office: Valenzuela City
-                                            </option>
-                                            <option
-                                                value="NTS Molino Bacoor, Cavite">
-                                                NTS Molino Bacoor, Cavite
-                                            </option>
-                                            <option
-                                                value="NTI Alaminos 2, Pangasinan">
-                                                NTI Alaminos 2, Pangasinan
-                                            </option>
-                                            <option
-                                                value="NTS Brookside General Trias, Cavite">
-                                                NTS Brookside General Trias, Cavite
-                                            </option>
-                                            <option
-                                                value="NTI Shell Mahogany, Cavite">
-                                                NTI Shell Mahogany, Cavite
-                                            </option>
-                                            <option
-                                                value="NTS Melendrez, Rizal">
-                                                NTS Melendrez, Rizal
-                                            </option>
-                                            <option
-                                                value="NTI Shell Magalang Angeles, Pampanga">
-                                                NTI Shell Magalang Angeles, Pampanga
-                                            </option>
-                                            <option
-                                                value="KDR GMA Edsa, Quezon City">
-                                                KDR GMA Edsa, Quezon City
-                                            </option>
-                                            <option
-                                                value="NTI Acienda Silang, Cavite">
-                                                NTI Acienda Silang, Cavite
-                                            </option>
-                                            <option
-                                                value="CNG SLT 2 Binan, Laguna">
-                                                CNG SLT 2 Binan, Laguna
-                                            </option>
-                                            <option
-                                                value="NFR Pusok, Cebu">
-                                                NFR Pusok, Cebu
-                                            </option>
-                                            <option
-                                                value="NTI Levi Mariano, Taguig">
-                                                NTI Levi Mariano, Taguig
-                                            </option>
-                                        </select>
+
+                                        <FloatingLabel controlId="floatingSelect" label="Site Location">
+                                            <Form.Select
+                                                className="form-control form-select text-center"
+                                                name="site_location"
+                                                onChange={this.handleChange}
+                                                value={this.state.form.site_location}
+                                            >
+                                                <option
+                                                    value=""
+                                                    selected
+                                                    disabled>
+                                                    Site Location
+                                                </option>
+                                                <option
+                                                    value="Office: Quezon City">
+                                                    Office: Quezon City
+                                                </option>
+                                                <option
+                                                    value="Office: Valenzuela City">
+                                                    Office: Valenzuela City
+                                                </option>
+                                                <option
+                                                    value="NTS Molino Bacoor, Cavite">
+                                                    NTS Molino Bacoor, Cavite
+                                                </option>
+                                                <option
+                                                    value="NTI Alaminos 2, Pangasinan">
+                                                    NTI Alaminos 2, Pangasinan
+                                                </option>
+                                                <option
+                                                    value="NTS Brookside General Trias, Cavite">
+                                                    NTS Brookside General Trias, Cavite
+                                                </option>
+                                                <option
+                                                    value="NTI Shell Mahogany, Cavite">
+                                                    NTI Shell Mahogany, Cavite
+                                                </option>
+                                                <option
+                                                    value="NTS Melendrez, Rizal">
+                                                    NTS Melendrez, Rizal
+                                                </option>
+                                                <option
+                                                    value="NTI Shell Magalang Angeles, Pampanga">
+                                                    NTI Shell Magalang Angeles, Pampanga
+                                                </option>
+                                                <option
+                                                    value="KDR GMA Edsa, Quezon City">
+                                                    KDR GMA Edsa, Quezon City
+                                                </option>
+                                                <option
+                                                    value="NTI Acienda Silang, Cavite">
+                                                    NTI Acienda Silang, Cavite
+                                                </option>
+                                                <option
+                                                    value="CNG SLT 2 Binan, Laguna">
+                                                    CNG SLT 2 Binan, Laguna
+                                                </option>
+                                                <option
+                                                    value="NFR Pusok, Cebu">
+                                                    NFR Pusok, Cebu
+                                                </option>
+                                                <option
+                                                    value="NTI Levi Mariano, Taguig">
+                                                    NTI Levi Mariano, Taguig
+                                                </option>
+                                            </Form.Select>
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
 
                                 {/* Attendance Type */}
                                 <Row>
                                     <Col xs={12} md={{ span: 12 }} className="mt-1">
-                                        <select
-                                            className="form-control form-select text-center"
-                                            name="type"
-                                            onChange={this.handleChange}
-                                            value={this.state.form.type}
-                                        >
-                                            <option
-                                                value=""
-                                                selected
-                                                disabled>
-                                                Attendance Type
-                                            </option>
-                                            <option
-                                                value="Time In">
-                                                Time In
-                                            </option>
-                                            <option
-                                                value="Time Out">
-                                                Time Out
-                                            </option>
-                                        </select>
+                                        <FloatingLabel controlId="floatingSelect" label="Attendance Type">
+                                            <Form.Select
+                                                className="form-control form-select text-center"
+                                                name="type"
+                                                onChange={this.handleChange}
+                                                value={this.state.form.type}
+                                            >
+                                                <option
+                                                    value=""
+                                                    selected
+                                                    disabled>
+                                                    Attendance Type
+                                                </option>
+                                                <option
+                                                    value="Time In">
+                                                    Time In
+                                                </option>
+                                                <option
+                                                    value="Time Out">
+                                                    Time Out
+                                                </option>
+                                            </Form.Select>
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
 
                                 {/* Remarks */}
                                 <Row>
                                     <Col xs={12} md={{ span: 12 }} className="mt-1">
-                                        <InputGroup>
+                                        <FloatingLabel
+                                            controlId="floatingInputEmployeeID"
+                                            label="Detected Location"
+                                        >
                                             <Form.Control
-                                                className="text-center"
+                                                type="text"
+                                                className="mb-1 text-center"
                                                 name="remarks"
                                                 onChange={this.handleChange}
                                                 value={this.state.form.remarks}
-                                                placeholder="Remarks"
                                             />
-                                        </InputGroup>
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
 
-
+                                {/* Buttons */}
                                 <Row>
                                     <Col xs={6} md={{ span: 3, offset: 3 }} className="mt-1">
                                         <div className="d-grid mt-3">
@@ -435,11 +472,11 @@ class MyAttendanceForm extends Component {
                                         </div>
                                     </Col>
                                 </Row>
+
                             </form>
                         </Container>
                     </Modal.Body>
                 </Modal>
-
 
             </>
         );

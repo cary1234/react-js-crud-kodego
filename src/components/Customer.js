@@ -1,21 +1,24 @@
 import React, { Component } from "react";
-import { Container, Table, Row, Col, Modal, Button } from 'react-bootstrap';
+import { Container, Table, Row, Col, Modal, Button, Form, InputGroup, FloatingLabel } from 'react-bootstrap';
 class Customer extends Component {
     state = {
-        isOpenDeleteModal: false
+        isOpenDeleteModalCustomer: false,
     };
 
-    openModalDeleteModal = () => this.setState({ isOpenDeleteModal: true });
-    closeModalDeleteModal = () => this.setState({ isOpenDeleteModal: false });
+    openModalDeleteModalCustomer = () => this.setState({ isOpenDeleteModalCustomer: true });
+    closeModalDeleteModalCustomer = () => this.setState({ isOpenDeleteModalCustomer: false });
+
+    openModalEditModalCustomer = () => this.setState({ isOpenEditModalCustomer: true });
+    closeModalEditModalCustomer = () => this.setState({ isOpenEditModalCustomer: false });
 
     //Note: This onDelete is linked to CustomerList.js
-    onDelete = () => {
+    onDeleteCustomer = () => {
         console.log('customer on delete');
-        this.props.onDelete(this.props.customer.id);
+        this.props.onDeleteCustomer(this.props.customer.id);
     }
-    onEdit = () => {
-        console.log('customer on edit');
-        this.props.onEdit(this.props.customer);
+    onEditCustomer = () => {
+        console.log('customer on edit' + this.props.customer);
+        this.props.onEditCustomer(this.props.customer);
     }
 
     render() {
@@ -40,7 +43,7 @@ class Customer extends Component {
                                     ("Admin") :
                                     (`${privilege}` === 'Regular') ?
                                         ("Regular") :
-                                        ("Error")
+                                        (<em className="text-danger">Not Assigned</em>)
                         }
                     </td>
                     {
@@ -50,12 +53,12 @@ class Customer extends Component {
                             (
                                 <>
                                     <td>
-                                        <button className="btn btn-primary" onClick={() => this.onEdit()}>
+                                        <button className="btn btn-primary" onClick={() => this.onEditCustomer()}>
                                             Update
                                         </button>
                                     </td>
                                     <td>
-                                        <button className="btn btn-danger" onClick={this.openModalDeleteModal}>
+                                        <button className="btn btn-danger" onClick={this.openModalDeleteModalCustomer}>
                                             Delete
                                         </button>
                                     </td>
@@ -73,108 +76,113 @@ class Customer extends Component {
                                     console.log("Employee")
                                     :
                                     //else error
-                                    console.log("Error")
+                                    console.log("Not Assigned Privilege")
                     }
                 </tr>
 
 
                 {/* Delete Employee Modal */}
                 <Modal
-                    show={this.state.isOpenDeleteModal}
-                    backdrop="static"
-                    keyboard={false}
-                    animation={false}
-                    centered
+                    show={this.state.isOpenDeleteModalCustomer}
                 >
 
                     <Modal.Body>
-                        <Container fluid className="text-center">
+                        <Container fluid>
                             <form>
                                 <Row>
-                                    <Col xs={6} md={{ span: 12 }} className="mt-1 mb-2">
+                                    <Col xs={6} md={{ span: 12 }} className="mt-1 mb-1 text-center">
                                         <label className="label">
-                                            <h4> Are you sure you want to permanently delete the employee?</h4>
+                                            <h5> Are you sure you want to permanently delete the employee record?</h5>
                                         </label>
                                     </Col>
                                 </Row>
 
+
+                                {/* Employee ID */}
                                 <Row>
-                                    <Col xs={6} md={{ span: 3, offset: 2 }} className="mt-1">
-                                        <label className="label">First Name: </label>
-                                    </Col>
-                                    <Col xs={6} md={{ span: 4 }} className="mt-1">
-                                        <input
-                                            className="input text-center"
-                                            type="text"
-                                            name="first_name"
-                                            value={first_name}
-                                            disabled
-                                        />
+                                    <Col xs={12} md={{ span: 12 }} className="mt-1">
+
+                                        <FloatingLabel
+                                            controlId="floatingInputEmployeeID"
+                                            label="Employee ID"
+                                            className="mb-1"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                value={employee_id}
+                                                disabled
+                                                className='text-center'
+                                            />
+                                        </FloatingLabel>
+
+                                        <FloatingLabel
+                                            controlId="floatingInputFirstName"
+                                            label="First Name"
+                                            className="mb-1"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                value={first_name}
+                                                disabled
+                                                className='text-center'
+                                            />
+                                        </FloatingLabel>
+
+                                        <FloatingLabel
+                                            controlId="floatingInputLastName"
+                                            label="Last Name"
+                                            className="mb-1"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                value={last_name}
+                                                disabled
+                                                className='text-center'
+                                            />
+                                        </FloatingLabel>
+
+                                        <FloatingLabel
+                                            controlId="floatingInputEmail"
+                                            label="Email"
+                                            className="mb-1"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                value={email}
+                                                disabled
+                                                className='text-center'
+                                            />
+                                        </FloatingLabel>
+
+
+                                        <FloatingLabel
+                                            controlId="floatingInputPrivilege"
+                                            label="Privilege"
+                                            className="mb-1"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                value={privilege}
+                                                disabled
+                                                className='text-center'
+                                            />
+                                        </FloatingLabel>
+
+
                                     </Col>
                                 </Row>
 
                                 <Row>
-                                    <Col xs={6} md={{ span: 3, offset: 2 }} className="mt-1">
-                                        <label className="label">
-                                            Last Name:
-                                        </label>
-                                    </Col>
-                                    <Col xs={6} md={{ span: 4 }} className="mt-1">
-                                        <input
-                                            className="input text-center"
-                                            type="text"
-                                            name="last_name"
-                                            value={last_name}
-                                            disabled
-                                        />
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col xs={6} md={{ span: 3, offset: 2 }} className="mt-1">
-                                        <label className="label">
-                                            Email:
-                                        </label>
-                                    </Col>
-                                    <Col xs={6} md={{ span: 4 }} className="mt-1">
-                                        <input
-                                            className="input text-center"
-                                            type="text"
-                                            name="email"
-                                            value={email}
-                                            disabled
-                                        />
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col xs={6} md={{ span: 3, offset: 2 }} className="mt-1">
-                                        <label className="label">
-                                            Privilege:
-                                        </label>
-                                    </Col>
-                                    <Col xs={6} md={{ span: 4 }} className="mt-1">
-                                        <input
-                                            className="input text-center"
-                                            type="text"
-                                            name="privilege"
-                                            value={last_name}
-                                            disabled
-                                        />
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col xs={6} md={{ span: 3, offset: 3 }} className="mt-1">
-                                        <div className="d-grid mt-3">
-                                            <button className="btn btn-danger" onClick={() => this.onDelete()}>
+                                    <Col xs={6} md={{ span: 6 }} >
+                                        <div className="d-grid mt-1">
+                                            <button className="btn btn-danger" onClick={() => this.onDeleteCustomer()}>
                                                 Yes
                                             </button>
                                         </div>
                                     </Col>
-                                    <Col xs={6} md={{ span: 3 }} className="mt-1">
-                                        <div className="d-grid mt-3">
-                                            <button className="btn btn-primary" onClick={this.closeModalDeleteModal}>
+                                    <Col xs={6} md={{ span: 6 }}>
+                                        <div className="d-grid mt-1">
+                                            <button className="btn btn-primary" onClick={this.closeModalDeleteModalCustomer}>
                                                 No
                                             </button>
                                         </div>
