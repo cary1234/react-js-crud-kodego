@@ -46,6 +46,9 @@ class Customer extends Component {
                                         (<em className="text-danger">Not Assigned</em>)
                         }
                     </td>
+                    <td>
+                        {status}
+                    </td>
                     {
                         //if super admin
                         (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
@@ -98,12 +101,11 @@ class Customer extends Component {
                                 </Row>
 
 
-                                {/* Employee ID */}
+                                {/* Delete Rows Employee ID, Name, Email, Privilege, Account Status */}
                                 <Row>
                                     <Col xs={12} md={{ span: 12 }} className="mt-1">
 
                                         <FloatingLabel
-                                            controlId="floatingInputEmployeeID"
                                             label="Employee ID"
                                             className="mb-1"
                                         >
@@ -116,7 +118,6 @@ class Customer extends Component {
                                         </FloatingLabel>
 
                                         <FloatingLabel
-                                            controlId="floatingInputFirstName"
                                             label="First Name"
                                             className="mb-1"
                                         >
@@ -129,7 +130,6 @@ class Customer extends Component {
                                         </FloatingLabel>
 
                                         <FloatingLabel
-                                            controlId="floatingInputLastName"
                                             label="Last Name"
                                             className="mb-1"
                                         >
@@ -142,7 +142,6 @@ class Customer extends Component {
                                         </FloatingLabel>
 
                                         <FloatingLabel
-                                            controlId="floatingInputEmail"
                                             label="Email"
                                             className="mb-1"
                                         >
@@ -154,9 +153,7 @@ class Customer extends Component {
                                             />
                                         </FloatingLabel>
 
-
                                         <FloatingLabel
-                                            controlId="floatingInputPrivilege"
                                             label="Privilege"
                                             className="mb-1"
                                         >
@@ -168,7 +165,17 @@ class Customer extends Component {
                                             />
                                         </FloatingLabel>
 
-
+                                        <FloatingLabel
+                                            label="Account Status"
+                                            className="mb-1"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                value={status}
+                                                disabled
+                                                className='text-center'
+                                            />
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
 

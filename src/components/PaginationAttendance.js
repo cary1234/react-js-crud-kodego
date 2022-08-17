@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 
 function PaginationAttendance() {
   return (
-    <Container className="d-flex justify-content-center mb-5">
+    <Container className="d-flex justify-content-center ">
       <Row>
         <Pagination size="sm">
           <Pagination.First disabled />
