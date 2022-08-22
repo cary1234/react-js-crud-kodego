@@ -7,12 +7,13 @@ import MyForm from "./MyForm"
 import CustomerList from "./CustomerList";
 import Loader from "./Loader";
 
+
 class Admin extends Component {
     state = {
         customers: [],
         customer: {},
         loader: false,
-        urlCustomers: "http://127.0.0.1/kodego_attendance_system/laravel-rest-api/public/api/customers",
+        urlCustomers: window.urlBase + "api/customers",
         isOpen: false
     };
 
@@ -60,7 +61,7 @@ class Admin extends Component {
     };
 
     onEditCustomer = data => {
-        console.log('app ', data);
+        //console.log('app ', data);
         this.setState({ customer: data });
     };
 

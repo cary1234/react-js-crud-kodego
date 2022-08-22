@@ -2,9 +2,18 @@ import React, { Component } from "react";
 import { Container, Row, Col, Modal, FloatingLabel, Form } from 'react-bootstrap';
 
 class Attendance extends Component {
-    state = {
-        isOpenDeleteModalAttendance: false,
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            timeCounter: 0,
+            isOpenDeleteModalAttendance: false,
+            dateIn: "",
+            dateOut: "",
+            datesIn: [],
+            datesOut: []
+        }
+    }
+
 
     openModalDeleteModalAttendance = () => this.setState({ isOpenDeleteModalAttendance: true });
     closeModalDeleteModalAttendance = () => this.setState({ isOpenDeleteModalAttendance: false });
@@ -23,13 +32,23 @@ class Attendance extends Component {
         this.props.onEditAttendance(this.props.attendance);
     }
 
+    // Jabez Paste near onEditAttendance Attendance.js
+    onSelectAttendance = () => {
+        this.props.onSelectAttendance(this.props.attendance);
+    }
+
+
+
     render() {
         const { id, employee_id_pk, real_location, site_location, type, remarks, created_at } = this.props.attendance;
 
         return (
             <>
                 <tr>
-                    <td>
+                    <td
+                        className="align-middle"
+                        onClick={this.onSelectAttendance}
+                    >
                         {
                             new Date(created_at).toLocaleString()
                         }
@@ -46,16 +65,33 @@ class Attendance extends Component {
                     <td>
                         {remarks}
                     </td>
-                    <td>
-                        <button className="btn btn-primary" onClick={() => this.onEditAttendance()}>
-                            Update
-                        </button>
-                    </td>
-                    <td>
-                        <button className="btn btn-danger" onClick={this.openModalDeleteModalAttendance}>
-                            Delete
-                        </button>
-                    </td>
+
+                    {
+                        //if super admin
+                        (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin' || localStorage.getItem('localStorageUserPrivilege') == 'Admin') ?
+                            //then
+                            (
+                                <>
+
+                                    <td>
+                                        <button className="btn btn-primary" onClick={() => this.onEditAttendance()}>
+                                            Update
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-danger" onClick={this.openModalDeleteModalAttendance}>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </>
+                            )
+                            :
+                            //else regular employee
+                            console.log("Employee")
+                    }
+
+
+
                 </tr>
 
                 {/* Delete Attendance Modal */}
@@ -76,7 +112,6 @@ class Attendance extends Component {
                                         </label>
                                     </Col>
                                 </Row>
-
 
                                 {/* Timestamp */}
                                 <Row>
@@ -111,8 +146,6 @@ class Attendance extends Component {
                                         </FloatingLabel>
                                     </Col>
                                 </Row>
-
-
 
                                 {/* Site Location */}
                                 <Row>
@@ -165,16 +198,16 @@ class Attendance extends Component {
                                     </Col>
                                 </Row>
 
-
+                                {/* Buttons */}
                                 <Row>
-                                    <Col xs={6} md={{ span: 3, offset: 3 }} className="mt-1">
+                                    <Col xs={6} md={{ span: 6 }} className="mt-1">
                                         <div className="d-grid mt-3">
                                             <button className="btn btn-danger" onClick={() => this.onDeleteAttendance()}>
                                                 Yes
                                             </button>
                                         </div>
                                     </Col>
-                                    <Col xs={6} md={{ span: 3 }} className="mt-1">
+                                    <Col xs={6} md={{ span: 6 }} className="mt-1">
                                         <div className="d-grid mt-3">
                                             <button className="btn btn-primary" onClick={this.closeModalDeleteModalAttendance}>
                                                 No

@@ -13,11 +13,11 @@ class Customer extends Component {
 
     //Note: This onDelete is linked to CustomerList.js
     onDeleteCustomer = () => {
-        console.log('customer on delete');
+        //console.log('customer on delete');
         this.props.onDeleteCustomer(this.props.customer.id);
     }
     onEditCustomer = () => {
-        console.log('customer on edit' + this.props.customer);
+        //console.log('customer on edit' + this.props.customer);
         this.props.onEditCustomer(this.props.customer);
     }
 
@@ -25,60 +25,89 @@ class Customer extends Component {
         const { id, employee_id, first_name, last_name, email, password, privilege, status } = this.props.customer;
         return (
             <>
-                <tr>
-                    <td>
-                        {`${employee_id}`}
-                    </td>
-                    <td>
-                        {`${first_name + " "}${last_name}`}
-                    </td>
-                    <td>
-                        {email}
-                    </td>
-                    <td>
-                        {
-                            (`${privilege}` === 'Super Admin') ?
-                                ("Super Admin") :
-                                (`${privilege}` === 'Admin') ?
-                                    ("Admin") :
-                                    (`${privilege}` === 'Regular') ?
-                                        ("Regular") :
-                                        (<em className="text-danger">Not Assigned</em>)
-                        }
-                    </td>
-                    {
-                        //if super admin
-                        (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
-                            //then
-                            (
-                                <>
-                                    <td>
-                                        <button className="btn btn-primary" onClick={() => this.onEditCustomer()}>
-                                            Update
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button className="btn btn-danger" onClick={this.openModalDeleteModalCustomer}>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </>
-                            )
 
-                            :
-                            //else if admin
-                            (localStorage.getItem('localStorageUserPrivilege') == 'Admin') ?
-                                //then
-                                console.log("Admin")
-                                :
-                                (localStorage.getItem('localStorageUserPrivilege') == 'Regular') ?
-                                    //else regular employee
-                                    console.log("Employee")
-                                    :
-                                    //else error
-                                    console.log("Not Assigned Privilege")
-                    }
-                </tr>
+                {
+                    //if super admin
+                    (localStorage.getItem('localStorageUserPrivilege') == 'Admin' && `${privilege}` == 'Super Admin') ?
+                        //then
+                        (
+                            //console.log("HEY: " + privilege)
+                            <>
+                            </>
+                        )
+                        :
+                        //Admin
+                        <>
+                            <tr>
+
+                                <td>
+                                    {`${employee_id}`}
+                                </td>
+                                <td>
+                                    {`${first_name + " "}${last_name}`}
+                                </td>
+                                <td>
+                                    {email}
+                                </td>
+                                <td>
+                                    {
+                                        (`${privilege}` === 'Super Admin') ?
+                                            ("Super Admin") :
+                                            (`${privilege}` === 'Admin') ?
+                                                ("Admin") :
+                                                (`${privilege}` === 'Regular') ?
+                                                    ("Regular") :
+                                                    (<em className="text-danger">Not Assigned</em>)
+                                    }
+                                </td>
+                                <td>
+                                    {status}
+                                </td>
+
+                                {/* Account Types */}
+                                {
+                                    //if super admin
+                                    (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
+                                        //then
+                                        (
+                                            <>
+                                                <td>
+                                                    <button className="btn btn-primary" onClick={() => this.onEditCustomer()}>
+                                                        Update
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button className="btn btn-danger" onClick={this.openModalDeleteModalCustomer}>
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </>
+                                        )
+
+                                        :
+                                        //else if admin
+                                        (localStorage.getItem('localStorageUserPrivilege') == 'Admin') ?
+                                            //then
+                                            <>
+                                                <td>
+                                                    <button className="btn btn-primary" onClick={() => this.onEditCustomer()}>
+                                                        Update
+                                                    </button>
+                                                </td>
+                                            </>
+                                            :
+                                            (localStorage.getItem('localStorageUserPrivilege') == 'Regular') ?
+                                                //else regular employee
+                                                console.log("Employee")
+                                                :
+                                                //else error
+                                                console.log("Not Assigned Privilege")
+                                }
+                            </tr>
+                        </>
+                }
+
+
 
 
                 {/* Delete Employee Modal */}
@@ -98,12 +127,11 @@ class Customer extends Component {
                                 </Row>
 
 
-                                {/* Employee ID */}
+                                {/* Delete Rows Employee ID, Name, Email, Privilege, Account Status */}
                                 <Row>
                                     <Col xs={12} md={{ span: 12 }} className="mt-1">
 
                                         <FloatingLabel
-                                            controlId="floatingInputEmployeeID"
                                             label="Employee ID"
                                             className="mb-1"
                                         >
@@ -116,7 +144,6 @@ class Customer extends Component {
                                         </FloatingLabel>
 
                                         <FloatingLabel
-                                            controlId="floatingInputFirstName"
                                             label="First Name"
                                             className="mb-1"
                                         >
@@ -129,7 +156,6 @@ class Customer extends Component {
                                         </FloatingLabel>
 
                                         <FloatingLabel
-                                            controlId="floatingInputLastName"
                                             label="Last Name"
                                             className="mb-1"
                                         >
@@ -142,7 +168,6 @@ class Customer extends Component {
                                         </FloatingLabel>
 
                                         <FloatingLabel
-                                            controlId="floatingInputEmail"
                                             label="Email"
                                             className="mb-1"
                                         >
@@ -154,9 +179,7 @@ class Customer extends Component {
                                             />
                                         </FloatingLabel>
 
-
                                         <FloatingLabel
-                                            controlId="floatingInputPrivilege"
                                             label="Privilege"
                                             className="mb-1"
                                         >
@@ -168,7 +191,17 @@ class Customer extends Component {
                                             />
                                         </FloatingLabel>
 
-
+                                        <FloatingLabel
+                                            label="Account Status"
+                                            className="mb-1"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                value={status}
+                                                disabled
+                                                className='text-center'
+                                            />
+                                        </FloatingLabel>
                                     </Col>
                                 </Row>
 

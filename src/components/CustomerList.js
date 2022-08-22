@@ -29,6 +29,7 @@ class CustomerList extends Component {
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Privilege</th>
+                                    <th>Account Status</th>
                                     {
                                         //if super admin
                                         (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
@@ -61,11 +62,8 @@ class CustomerList extends Component {
                             </tbody>
                         </Table>
                     </Col>
-
-
                     <PaginationAttendance />
                 </Container>
-
             </>
         );
     }
