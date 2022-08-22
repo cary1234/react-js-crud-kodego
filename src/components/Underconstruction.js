@@ -24,8 +24,10 @@ const Underconstruction = () => {
                                 <div className="error-actions mt-3 pt-3 mb-5 pb-5">
 
 
-                                    <Link to="/" className="btn btn-outline-light btn-primary btn-lg"
-                                        role="button">
+                                    <Link
+                                        to="/"
+                                        className="btn btn-outline-light btn-primary btn-lg"
+                                    >
                                         Take Me Home
                                     </Link>
 

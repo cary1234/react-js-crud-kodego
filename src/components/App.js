@@ -1,6 +1,4 @@
-// import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
-// import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { React, Component } from "react";
 import axios from "axios";
 import { Container, Row, Col, Modal } from 'react-bootstrap';
@@ -40,7 +38,7 @@ class App extends Component {
 
     componentDidMount() {
         this.getAttendances();
-        console.log("URL: " + window.location.href)
+        //console.log("URL: " + window.location.href)
     }
 
     //Attendance
@@ -86,6 +84,7 @@ class App extends Component {
             hours: 0,
             idx: "hey hey",
         });
+
         this.state.attendances.map((attendance) => {
             // get all attendance dates
             let allAttendanceDate = new Date(attendance.created_at);
@@ -362,8 +361,8 @@ class App extends Component {
                             <Row>
                                 <Col xs={6} md={{ span: 6 }} className="mt-1 mb-2">
                                     <div className="d-grid mt-3">
-                                        <button onClick={() => window.location = 'mailto:support@spediph.com'} className="btn btn-primary"
-                                            role="button">
+                                        <button onClick={() => window.location = 'mailto:support@email.com'} className="btn btn-primary"
+                                        >
                                             Email Support
                                         </button>
                                     </div>
@@ -371,7 +370,7 @@ class App extends Component {
                                 <Col xs={6} md={{ span: 6 }} className="mt-1 mb-2">
                                     <div className="d-grid mt-3">
                                         <button onClick={() => window.location = 'tel:+18475555555'} className="btn btn-primary"
-                                            role="button">
+                                        >
                                             Call Support
                                         </button>
                                     </div>

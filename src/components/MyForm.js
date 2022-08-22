@@ -64,10 +64,20 @@ class MyForm extends Component {
             <>
                 <Container>
                     <div className="d-grid mt-3">
-                        <a href="/#" className="btn  btn-primary" onClick={this.openModalAddModalCustomer}>Add Employee</a>
+                        <button
+                            className="btn  btn-primary"
+                            onClick={this.openModalAddModalCustomer}
+                        >
+                            Add Employee
+                        </button>
+
                     </div>
                     <div className="d-grid mt-2 mb-3">
-                        <a href="/#" className="btn  btn-danger" onClick={this.openModalEditModalCustomerPassword}>Change My Password</a>
+                        <button
+                            className="btn  btn-primary"
+                            onClick={this.openModalEditModalCustomerPassword}>
+                            Change My Password
+                        </button>
                     </div>
                 </Container>
 

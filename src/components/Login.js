@@ -49,9 +49,9 @@ class Login extends Component {
                         <Col xs={12} md={{ span: 8, offset: 2 }} className="contents text-center">
                             <h3>
                                 <a className="navbar-brand me-3">
-                                    <img src={logoUrl} height="100" alt="SPEDI Logo" />
+                                    <img src={logoUrl} height="100" alt="SPEDI" />
                                 </a>
-                                SPEDI Construction, Inc
+                                Company Name
                             </h3>
                         </Col>
                     </Row>
@@ -64,7 +64,7 @@ class Login extends Component {
                             <Row className="justify-content-center">
                                 <Col md={{ span: 10 }} className="contents">
                                     <h5>Online Attendance Monitoring System</h5>
-                                    <p className="mb-4">For all your technical concerns, kindly email the support team at <a href="mailto:support@spediph.com">support@spediph.com</a>.</p>
+                                    <p className="mb-4">For all your technical concerns, kindly email the support team at <a href="mailto:support@spediph.com">support@email.com</a>.</p>
                                     <Form>
 
                                         {/* Email Address */}
@@ -113,30 +113,31 @@ class Login extends Component {
                 <Container className="d-none d-lg-block">
                     <Row className=" ms-5 ps-3 pt-4 pb-5">
                         <Col xs={12} lg={{ span: 3, offset: 1 }} className="text-center">
-                            <a href="/#" >
+
+
+
+                            <button className="btn">
                                 <Icon.Facebook
                                     color="blue"
                                     size={50}
                                 />
-                            </a>
+                            </button>
                         </Col>
                         <Col xs={12} lg={{ span: 3 }} className="text-center">
-
-                            <a href="/#" >
+                            <button className="btn">
                                 <Icon.Instagram
                                     color="blue"
                                     size={50}
                                 />
-                            </a>
-
+                            </button>
                         </Col>
                         <Col xs={12} lg={{ span: 3 }} className="text-center">
-                            <a href="/#">
+                            <button className="btn">
                                 <Icon.Twitter
                                     color="blue"
                                     size={50}
                                 />
-                            </a>
+                            </button>
                         </Col>
                     </Row>
                 </Container>

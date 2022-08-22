@@ -92,18 +92,22 @@ class MyAttendanceForm extends Component {
             <>
                 <Container>
                     <div className="d-grid mt-3 mb-3">
-                        <a href="/#"
-                            className="btn  btn-primary"
+
+                        <button className="btn  btn-primary"
                             onClick={() => {
-                                this.openModalAddModalAttendance();
-                                this.getCurrentCity();
+                                this.openModalAddModalAttendance()
+                                this.getCurrentCity()
                             }}
-                        >Add Attendance</a>
+                        >
+                            Add Attendance
+                        </button>
+
+
                     </div>
-                </Container>
+                </Container >
 
                 {/* Add Attendance Modal */}
-                <Modal
+                < Modal
                     show={this.state.isOpenAddModalAttendance}
                     backdrop="static"
                     keyboard={false}
@@ -286,10 +290,10 @@ class MyAttendanceForm extends Component {
                             </form>
                         </Container>
                     </Modal.Body>
-                </Modal>
+                </Modal >
 
                 {/* Edit Attendance Modal */}
-                <Modal show={this.state.isOpenEditModalAttendance}>
+                < Modal show={this.state.isOpenEditModalAttendance} >
                     <Modal.Body>
                         <Container fluid className="">
                             <form>
@@ -476,7 +480,7 @@ class MyAttendanceForm extends Component {
                             </form>
                         </Container>
                     </Modal.Body>
-                </Modal>
+                </Modal >
 
             </>
         );

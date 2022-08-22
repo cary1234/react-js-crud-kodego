@@ -22,7 +22,7 @@ const Header = (props) => {
                         }}>
                         <div className="container-fluid">
                             <a className="navbar-brand">
-                                <img src={logoUrl} height="75" alt="SPEDI Logo" />
+                                <img src={logoUrl} height="75" alt="SPEDI" />
                             </a>
 
                             {/* hide when <= medium */}
@@ -91,13 +91,19 @@ const Header = (props) => {
                                     </em>
                                 </div>
 
-                                <a href="/#" className="navbar-brand ms-3">
+                                <button className="btn navbar-brand ms-3"
+                                    onClick={() => {
+                                        this.openModalAddModalAttendance()
+                                        this.getCurrentCity()
+                                    }}
+                                >
                                     <Icon.BoxArrowRight
                                         color="blue"
                                         size={35}
                                         onClick={() => handleShowLogout()}
                                     />
-                                </a>
+                                </button>
+
                             </div>
                         </div>
                     </nav>
