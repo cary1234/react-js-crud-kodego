@@ -211,9 +211,11 @@ class MyForm extends Component {
                                                 <option
                                                     value=""
                                                     selected
-                                                    disabled>
+                                                    disabled
+                                                >
                                                     Privilege
                                                 </option>
+
 
 
                                                 {
@@ -236,20 +238,22 @@ class MyForm extends Component {
 
 
                                                 <option
-                                                    value="Admin">
+                                                    value="Admin"
+                                                >
                                                     Admin
                                                 </option>
                                                 <option
-                                                    value="Regular">
+                                                    value="Regular"
+                                                >
                                                     Regular
                                                 </option>
-                                            </Form.Select>
-                                        </FloatingLabel>
-                                    </Col>
-                                </Row>
+                                            </Form.Select >
+                                        </FloatingLabel >
+                                    </Col >
+                                </Row >
 
                                 {/* Buttons */}
-                                <Row>
+                                < Row >
                                     <Col xs={6} md={{ span: 6 }} className="mt-1">
                                         <div className="d-grid mt-3">
                                             <button className="btn btn-primary" onClick={this.onFormSubmitCustomer}>
@@ -264,14 +268,14 @@ class MyForm extends Component {
                                             </button>
                                         </div>
                                     </Col>
-                                </Row>
-                            </form>
-                        </Container>
-                    </Modal.Body>
-                </Modal>
+                                </Row >
+                            </form >
+                        </Container >
+                    </Modal.Body >
+                </Modal >
 
                 {/* Edit Employee Modal */}
-                <Modal show={this.state.isOpenEditModalCustomer}>
+                < Modal show={this.state.isOpenEditModalCustomer} >
                     <Modal.Body>
                         <Container fluid className="">
                             <form>
@@ -413,6 +417,7 @@ class MyForm extends Component {
                                                     disabled>
                                                     Privilege
                                                 </option>
+
                                                 {
                                                     //if super admin
                                                     (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
@@ -430,21 +435,24 @@ class MyForm extends Component {
                                                         //else regular employee
                                                         console.log("Employee")
                                                 }
+
                                                 <option
-                                                    value="Admin">
+                                                    value="Admin"
+                                                >
                                                     Admin
                                                 </option>
                                                 <option
-                                                    value="Regular">
+                                                    value="Regular"
+                                                >
                                                     Regular
                                                 </option>
-                                            </Form.Select>
-                                        </FloatingLabel>
-                                    </Col>
-                                </Row>
+                                            </Form.Select >
+                                        </FloatingLabel >
+                                    </Col >
+                                </Row >
 
                                 {/* Account Status */}
-                                <Row>
+                                < Row >
                                     <Col xs={12} md={{ span: 12 }} className="mt-1">
                                         <FloatingLabel
                                             label="Account Status"
@@ -471,10 +479,10 @@ class MyForm extends Component {
                                             </Form.Select>
                                         </FloatingLabel>
                                     </Col>
-                                </Row>
+                                </Row >
 
                                 {/* Buttons */}
-                                <Row>
+                                < Row >
                                     <Col xs={6} md={{ span: 6 }} className="mt-1">
                                         <div className="d-grid mt-3">
                                             <button className="btn btn-primary" onClick={this.onFormSubmitCustomer}>
@@ -489,14 +497,14 @@ class MyForm extends Component {
                                             </button>
                                         </div>
                                     </Col>
-                                </Row>
-                            </form>
-                        </Container>
-                    </Modal.Body>
-                </Modal>
+                                </Row >
+                            </form >
+                        </Container >
+                    </Modal.Body >
+                </Modal >
 
                 {/* Change Password Employee Modal */}
-                <Modal show={this.state.isOpenEditModalCustomerPassword}>
+                < Modal show={this.state.isOpenEditModalCustomerPassword} >
                     <Modal.Body>
                         <Container fluid className="">
                             <form>
@@ -565,7 +573,7 @@ class MyForm extends Component {
                             </form>
                         </Container>
                     </Modal.Body>
-                </Modal>
+                </Modal >
 
             </>
         );

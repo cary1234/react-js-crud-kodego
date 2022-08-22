@@ -59,6 +59,8 @@ class AttendanceList extends Component {
                                             //else regular employee
                                             console.log("Employee")
                                     }
+
+                                    <th colSpan={2}>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
