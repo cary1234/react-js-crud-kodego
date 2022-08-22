@@ -29,9 +29,9 @@ class App extends Component {
         urlAttendances: window.urlBase + "api/attendances",
         urlAttendancesEmployee: window.urlBase + "api/search?search=" + localStorage.getItem('localStorageUserID'),
         urlLogin: window.urlBase + "api/login",
-        urlAttendances: "http://127.0.0.1/kodego_attendance_system/laravel-rest-api/public/api/attendances",
-        urlAttendancesEmployee: "http://127.0.0.1/kodego_attendance_system/laravel-rest-api/public/api/search?search=" + localStorage.getItem('localStorageUserID'),
-        urlLogin: "http://127.0.0.1/kodego_attendance_system/laravel-rest-api/public/api/login",
+        urlAttendances: window.urlBase + "api/attendances",
+        urlAttendancesEmployee: window.urlBase + "api/search?search=" + localStorage.getItem('localStorageUserID'),
+        urlLogin: window.urlBase + "api/login",
         isOpenLogin: false,
         isLoginValid: false
     };
