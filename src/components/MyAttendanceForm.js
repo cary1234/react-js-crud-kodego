@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { Container, Table, Row, Col, Modal, Button, Form, InputGroup, FloatingLabel } from 'react-bootstrap';
+import { Container, Row, Col, Modal, Form, InputGroup, FloatingLabel } from 'react-bootstrap';
 import Clock from 'react-live-clock';
 import axios from 'axios';
 
@@ -87,14 +87,12 @@ class MyAttendanceForm extends Component {
     }
 
     render() {
-        const { id, real_location, site_location, type, remarks, created_at } = this.props.attendance;
-
 
         return (
             <>
                 <Container>
                     <div className="d-grid mt-3 mb-3">
-                        <a href="#"
+                        <a href="/#"
                             className="btn  btn-primary"
                             onClick={() => {
                                 this.openModalAddModalAttendance();
@@ -138,7 +136,7 @@ class MyAttendanceForm extends Component {
                                     <Form.Control
                                         type="text"
                                         value={
-                                            (this.state.real_location == undefined) ? "Detecting Location..." : this.state.real_location
+                                            (this.state.real_location === undefined) ? "Detecting Location..." : this.state.real_location
                                         }
                                         className='text-center'
                                         disabled

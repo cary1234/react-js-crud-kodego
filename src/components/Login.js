@@ -1,6 +1,5 @@
 import loginPictture from '../assets/images/undraw_remotely_2j6y.svg';
-import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Form, FloatingLabel } from 'react-bootstrap';
+import { Container, Row, Col, Form, FloatingLabel } from 'react-bootstrap';
 import logoUrl from '../assets/images/logo.png';
 import { React, Component } from "react";
 import * as Icon from 'react-bootstrap-icons';
@@ -38,7 +37,6 @@ class Login extends Component {
     }
 
     render() {
-        const { id, employee_id, first_name, last_name, email, password, privilege } = this.props.login;
         return (
             <>
                 <Container className="d-none d-lg-block">
@@ -60,7 +58,7 @@ class Login extends Component {
 
                     <Row className="">
                         <Col lg={{ span: 4, offset: 2 }} className="d-none d-md-none d-lg-block">
-                            <img src={loginPictture} alt="Login Picture" className="img-fluid" width={350} />
+                            <img src={loginPictture} alt="Login" className="img-fluid" width={350} />
                         </Col>
                         <Col md={12} lg={{ span: 4 }} className="contents">
                             <Row className="justify-content-center">
@@ -115,7 +113,7 @@ class Login extends Component {
                 <Container className="d-none d-lg-block">
                     <Row className=" ms-5 ps-3 pt-4 pb-5">
                         <Col xs={12} lg={{ span: 3, offset: 1 }} className="text-center">
-                            <a href="#" >
+                            <a href="/#" >
                                 <Icon.Facebook
                                     color="blue"
                                     size={50}
@@ -124,7 +122,7 @@ class Login extends Component {
                         </Col>
                         <Col xs={12} lg={{ span: 3 }} className="text-center">
 
-                            <a href="#" >
+                            <a href="/#" >
                                 <Icon.Instagram
                                     color="blue"
                                     size={50}
@@ -133,7 +131,7 @@ class Login extends Component {
 
                         </Col>
                         <Col xs={12} lg={{ span: 3 }} className="text-center">
-                            <a href="#">
+                            <a href="/#">
                                 <Icon.Twitter
                                     color="blue"
                                     size={50}

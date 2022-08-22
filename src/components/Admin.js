@@ -1,7 +1,6 @@
 // npm install axios --save
 
 import React, { Component } from "react";
-import { Container, Table, Row, Col, Modal, Button } from 'react-bootstrap';
 import axios from "axios";
 import MyForm from "./MyForm"
 import CustomerList from "./CustomerList";

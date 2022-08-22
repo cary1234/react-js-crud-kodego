@@ -68,7 +68,7 @@ class Attendance extends Component {
 
                     {
                         //if super admin
-                        (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin' || localStorage.getItem('localStorageUserPrivilege') == 'Admin') ?
+                        (localStorage.getItem('localStorageUserPrivilege') === 'Super Admin' || localStorage.getItem('localStorageUserPrivilege') === 'Admin') ?
                             //then
                             (
                                 <>

@@ -1,5 +1,5 @@
 import logoUrl from '../assets/images/logo.png';
-import { Container, Row, Col, Button, Modal, Navbar, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Modal } from 'react-bootstrap';
 import { React, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import * as Icon from 'react-bootstrap-icons';
@@ -27,7 +27,7 @@ const Header = (props) => {
 
                             {/* hide when <= medium */}
                             <h5 className="d-none d-lg-block">
-                                SPEDI Construction, Inc
+                                Company Name Here
                             </h5>
 
                             {/* show when >= medium */}
@@ -60,7 +60,7 @@ const Header = (props) => {
                                     } */}
                                     {
                                         //if super admin
-                                        (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
+                                        (localStorage.getItem('localStorageUserPrivilege') === 'Super Admin') ?
                                             //then
                                             <NavLink
                                                 className="nav-item nav-link"
@@ -70,7 +70,7 @@ const Header = (props) => {
                                             </NavLink>
                                             :
                                             //else if admin
-                                            (localStorage.getItem('localStorageUserPrivilege') == 'Admin') ?
+                                            (localStorage.getItem('localStorageUserPrivilege') === 'Admin') ?
                                                 //then
                                                 <NavLink
                                                     className="nav-item nav-link"
@@ -91,7 +91,7 @@ const Header = (props) => {
                                     </em>
                                 </div>
 
-                                <a href="#" className="navbar-brand ms-3">
+                                <a href="/#" className="navbar-brand ms-3">
                                     <Icon.BoxArrowRight
                                         color="blue"
                                         size={35}

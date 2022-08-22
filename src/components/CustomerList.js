@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Customer from "./Customer";
-import { Container, Table, Row, Col, Modal, Button } from 'react-bootstrap';
+import { Container, Table, Col } from 'react-bootstrap';
 
 
 import PaginationAttendance from './PaginationAttendance'
@@ -32,7 +32,7 @@ class CustomerList extends Component {
                                     <th>Account Status</th>
                                     {
                                         //if super admin
-                                        (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
+                                        (localStorage.getItem('localStorageUserPrivilege') === 'Super Admin') ?
                                             //then
                                             (
                                                 <>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Table, Row, Col, Modal, Button, Form, FloatingLabel } from 'react-bootstrap';
+import { Container, Row, Col, Modal, Form, FloatingLabel } from 'react-bootstrap';
 
 class MyForm extends Component {
     state = {
@@ -64,10 +64,10 @@ class MyForm extends Component {
             <>
                 <Container>
                     <div className="d-grid mt-3">
-                        <a href="#" className="btn  btn-primary" onClick={this.openModalAddModalCustomer}>Add Employee</a>
+                        <a href="/#" className="btn  btn-primary" onClick={this.openModalAddModalCustomer}>Add Employee</a>
                     </div>
                     <div className="d-grid mt-2 mb-3">
-                        <a href="#" className="btn  btn-danger" onClick={this.openModalEditModalCustomerPassword}>Change My Password</a>
+                        <a href="/#" className="btn  btn-danger" onClick={this.openModalEditModalCustomerPassword}>Change My Password</a>
                     </div>
                 </Container>
 
@@ -220,7 +220,7 @@ class MyForm extends Component {
 
                                                 {
                                                     //if super admin
-                                                    (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
+                                                    (localStorage.getItem('localStorageUserPrivilege') === 'Super Admin') ?
                                                         //then
                                                         (
                                                             <>
@@ -420,7 +420,7 @@ class MyForm extends Component {
 
                                                 {
                                                     //if super admin
-                                                    (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
+                                                    (localStorage.getItem('localStorageUserPrivilege') === 'Super Admin') ?
                                                         //then
                                                         (
                                                             <>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Table, Row, Col, Modal, Button, Form, InputGroup, FloatingLabel } from 'react-bootstrap';
+import { Container, Row, Col, Modal, Form, FloatingLabel } from 'react-bootstrap';
 class Customer extends Component {
     state = {
         isOpenDeleteModalCustomer: false,
@@ -22,13 +22,13 @@ class Customer extends Component {
     }
 
     render() {
-        const { id, employee_id, first_name, last_name, email, password, privilege, status } = this.props.customer;
+        const { employee_id, first_name, last_name, email, privilege, status } = this.props.customer;
         return (
             <>
 
                 {
                     //if super admin
-                    (localStorage.getItem('localStorageUserPrivilege') == 'Admin' && `${privilege}` == 'Super Admin') ?
+                    (localStorage.getItem('localStorageUserPrivilege') === 'Admin' && `${privilege}` === 'Super Admin') ?
                         //then
                         (
                             //console.log("HEY: " + privilege)
@@ -67,7 +67,7 @@ class Customer extends Component {
                                 {/* Account Types */}
                                 {
                                     //if super admin
-                                    (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin') ?
+                                    (localStorage.getItem('localStorageUserPrivilege') === 'Super Admin') ?
                                         //then
                                         (
                                             <>
@@ -86,7 +86,7 @@ class Customer extends Component {
 
                                         :
                                         //else if admin
-                                        (localStorage.getItem('localStorageUserPrivilege') == 'Admin') ?
+                                        (localStorage.getItem('localStorageUserPrivilege') === 'Admin') ?
                                             //then
                                             <>
                                                 <td>
@@ -96,7 +96,7 @@ class Customer extends Component {
                                                 </td>
                                             </>
                                             :
-                                            (localStorage.getItem('localStorageUserPrivilege') == 'Regular') ?
+                                            (localStorage.getItem('localStorageUserPrivilege') === 'Regular') ?
                                                 //else regular employee
                                                 console.log("Employee")
                                                 :

@@ -1,5 +1,4 @@
-import { Pagination, Container, Col, Row } from 'react-bootstrap';
-import { render } from 'react-dom';
+import { Pagination, Container, Row } from 'react-bootstrap';
 
 
 function PaginationAttendance() {

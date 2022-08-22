@@ -27,8 +27,6 @@ class AttendanceList extends Component {
 
     render() {
         const attendances = this.props.attendances;
-        const idx1 = this.props.idx;
-        const hours1 = this.props.hours;
         return (
             <>
                 <Container className="text-center">
@@ -47,7 +45,7 @@ class AttendanceList extends Component {
                                     <th>Remarks</th>
                                     {
                                         //if super admin
-                                        (localStorage.getItem('localStorageUserPrivilege') == 'Super Admin' || localStorage.getItem('localStorageUserPrivilege') == 'Admin') ?
+                                        (localStorage.getItem('localStorageUserPrivilege') === 'Super Admin' || localStorage.getItem('localStorageUserPrivilege') === 'Admin') ?
                                             //then
                                             (
                                                 <>

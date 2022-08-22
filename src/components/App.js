@@ -3,10 +3,9 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { React, Component } from "react";
 import axios from "axios";
-import { Container, Row, Col, Button, Form, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Modal } from 'react-bootstrap';
 
 import Login from './Login'
-import Attendance from './Attendance'
 import Header from './Header'
 import Admin from './Admin'
 import Underconstruction from './Underconstruction'
@@ -26,9 +25,6 @@ class App extends Component {
         attendance: {},
         logins: [],
         login: {},
-        urlAttendances: window.urlBase + "api/attendances",
-        urlAttendancesEmployee: window.urlBase + "api/search?search=" + localStorage.getItem('localStorageUserID'),
-        urlLogin: window.urlBase + "api/login",
         urlAttendances: window.urlBase + "api/attendances",
         urlAttendancesEmployee: window.urlBase + "api/search?search=" + localStorage.getItem('localStorageUserID'),
         urlLogin: window.urlBase + "api/login",
@@ -219,7 +215,7 @@ class App extends Component {
                 localStorage.setItem('localStorageUserLastName', userLastName);
                 console.log("Stringify Val: " + stringify[i])
             }
-            if (status == "Active") {
+            if (status === "Active") {
                 window.location.replace("/attendance")
             } else {
                 this.setState({ isLoginValid: false });
@@ -238,14 +234,14 @@ class App extends Component {
     closeModalLoginModal = () => this.setState({ isOpenLogin: false });
 
     renderElement() {
-        if (this.state.loader == true) {
+        if (this.state.loader === true) {
             return (
                 <>
                     <Loader />
                 </>
             );
         } else {
-            if (localStorage.getItem('localStorageIsLoginValid') == true) {
+            if (localStorage.getItem('localStorageIsLoginValid') === true) {
                 //valid login
                 //console.log("Valid login");
                 window.location.replace("/attendance")
@@ -282,7 +278,7 @@ class App extends Component {
                                             {/* //Jabez */}
                                             <h3 className="text-center">
                                                 {
-                                                    (this.state.hours == null || this.state.hours == 0) ? ""
+                                                    (this.state.hours === null || this.state.hours === 0) ? ""
                                                         :
                                                         "Total Time: " + (this.state.hours)
                                                 }
