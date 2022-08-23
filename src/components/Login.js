@@ -1,5 +1,5 @@
 import loginPictture from '../assets/images/undraw_remotely_2j6y.svg';
-import { Container, Row, Col, Form, FloatingLabel } from 'react-bootstrap';
+import { Container, Row, Col, Form, FloatingLabel, Modal, Table } from 'react-bootstrap';
 import logoUrl from '../assets/images/logo.png';
 import { React, Component } from "react";
 import * as Icon from 'react-bootstrap-icons';
@@ -7,6 +7,7 @@ import * as Icon from 'react-bootstrap-icons';
 class Login extends Component {
     state = {
         form: { id: '', employee_id: '', first_name: '', last_name: '', email: '', password: '', privilege: '' },
+        guideModalStatus: false,
     };
 
     //Note: Linked to the input fields of firstName, lastName and email
@@ -36,6 +37,10 @@ class Login extends Component {
         }
     }
 
+
+    openGuideModal = () => this.setState({ guideModalStatus: true });
+    closeGuideModal = () => this.setState({ guideModalStatus: false });
+
     render() {
         return (
             <>
@@ -63,14 +68,14 @@ class Login extends Component {
                         <Col md={12} lg={{ span: 4 }} className="contents">
                             <Row className="justify-content-center">
                                 <Col md={{ span: 10 }} className="contents">
-                                    <h5>Online Attendance Monitoring System</h5>
-                                    <p className="mb-4">For all your technical concerns, kindly email the support team at <a href="mailto:support@spediph.com">support@email.com</a>.</p>
+                                    <h5>Attendance Monitoring System</h5>
+                                    {/* <p className="mb-4">For all your technical concerns, kindly email the support team at <a href="mailto:support@spediph.com">support@email.com</a>.</p> */}
                                     <Form>
 
                                         {/* Email Address */}
                                         <FloatingLabel
                                             label="Company Email Address"
-                                            className="mb-1"
+                                            className="mb-1 mt-4"
                                         >
                                             <Form.Control
                                                 type="text"
@@ -84,7 +89,7 @@ class Login extends Component {
                                         {/* Password */}
                                         <FloatingLabel
                                             label="Password"
-                                            className="mb-1"
+                                            className="mb-1 mt-3"
                                         >
                                             <Form.Control
                                                 type="password"
@@ -95,12 +100,21 @@ class Login extends Component {
                                             />
                                         </FloatingLabel>
 
-                                        {/* Button */}
+                                        {/* Login Button */}
                                         <div className="d-grid mt-3 mb-3">
                                             <button type="button"
                                                 className="btn btn-outline-info"
                                                 onClick={this.getLogin}>
                                                 Sign In
+                                            </button>
+                                        </div>
+
+                                        {/* Guide Button */}
+                                        <div className="d-grid mt-3 mb-3">
+                                            <button type="button"
+                                                className="btn btn-outline-info"
+                                                onClick={this.openGuideModal}>
+                                                How to Use
                                             </button>
                                         </div>
                                     </Form>
@@ -141,6 +155,94 @@ class Login extends Component {
                         </Col>
                     </Row>
                 </Container>
+
+
+
+                {/* modal for guide */}
+
+                <Modal
+                    show={this.state.guideModalStatus}
+                    centered
+                >
+                    <Modal.Header>
+
+                        <Col md={{ span: 12 }}>
+                            <h5 className="text-center">
+                                Guide on How to Use
+                            </h5>
+                        </Col>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <Container fluid className=" text-justify">
+                            <Row>
+                                <Col xs={12} md={{ span: 12 }} className="text-center">
+                                    <label className="label">
+                                        Demo Accounts
+                                    </label>
+                                </Col>
+                            </Row>
+                            <Row>
+
+                                <Table className='text-center' striped bordered hover>
+                                    <thead>
+                                        < tr>
+                                            <th>
+                                                Email Address
+                                            </th>
+                                            <th>
+                                                Password
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                superadmin@email.com
+                                            </td>
+                                            <td>
+                                                123
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                admin@email.com
+                                            </td>
+                                            <td>
+                                                1234
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                regular@email.com
+                                            </td>
+                                            <td>
+                                                12345
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </Row>
+                            <Row>
+                                <Col xs={12} md={{ span: 12 }} className="mt-1 mb-2">
+                                    <label className="label">
+                                        <em className='text-danger'>Note: </em>This system was created from scratch in just three-weeks as part of the requirements in my KodeGo boot camp. The system uses  <em>ReactJS</em> and <em>Laravel</em>, both of which I just learned and experimented in one month.
+                                    </label>
+                                </Col>
+                            </Row>
+
+                            <Row>
+                                <Col xs={12} md={{ span: 12 }} className="mt-3 mb-1">
+                                    <div className="d-grid">
+                                        <button className="btn btn-danger" onClick={this.closeModalLoginModal}>
+                                            Close
+                                        </button>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Modal.Body>
+                </Modal>
             </>
         )
     }

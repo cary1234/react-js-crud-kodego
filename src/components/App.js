@@ -30,7 +30,8 @@ class App extends Component {
         urlAttendancesEmployee: window.urlBase + "api/search?search=" + localStorage.getItem('localStorageUserID'),
         urlLogin: window.urlBase + "api/login",
         isOpenLogin: false,
-        isLoginValid: false
+        isLoginValid: false,
+        isOpenInfo: false,
     };
 
     componentDidUpdate() {
@@ -394,6 +395,8 @@ class App extends Component {
                         </Container>
                     </Modal.Body>
                 </Modal>
+
+
             </>
         )
     }
