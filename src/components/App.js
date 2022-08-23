@@ -280,7 +280,9 @@ class App extends Component {
                                             {/* //Jabez */}
                                             <h3 className="text-center">
                                                 {
-                                                    (this.state.hours === null || this.state.hours === 0) ? ""
+                                                    (this.state.hours === null || this.state.hours === 0 || this.state.hours === undefined)
+                                                        ?
+                                                        ""
                                                         :
                                                         "Total Time: " + (this.state.hours)
                                                 }
