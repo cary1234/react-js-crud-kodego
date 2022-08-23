@@ -176,8 +176,8 @@ class Login extends Component {
                     <Modal.Body>
                         <Container fluid className=" text-justify">
                             <Row>
-                                <Col xs={12} md={{ span: 12 }} className="text-center">
-                                    <label className="label">
+                                <Col md={{ span: 12 }} className="text-center">
+                                    <label className="label mb-2">
                                         Demo Accounts
                                     </label>
                                 </Col>
@@ -226,7 +226,8 @@ class Login extends Component {
                             <Row>
                                 <Col xs={12} md={{ span: 12 }} className="mt-1 mb-2">
                                     <label className="label">
-                                        <em className='text-danger'>Note: </em>This system was created from scratch in just three-weeks as part of the requirements in my KodeGo boot camp. The system uses  <em>ReactJS</em> and <em>Laravel</em>, both of which I just learned and experimented in one month.
+                                        <p>Note: This system was created from scratch in just three-weeks as part of the requirements in my KodeGo boot camp. The system uses  <em>ReactJS</em> and <em>Laravel</em>, both of which I just learned and experimented in one month.
+                                        </p>
                                     </label>
                                 </Col>
                             </Row>
@@ -234,7 +235,7 @@ class Login extends Component {
                             <Row>
                                 <Col xs={12} md={{ span: 12 }} className="mt-3 mb-1">
                                     <div className="d-grid">
-                                        <button className="btn btn-danger" onClick={this.closeModalLoginModal}>
+                                        <button className="btn btn-danger" onClick={this.closeGuideModal}>
                                             Close
                                         </button>
                                     </div>
