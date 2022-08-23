@@ -12,7 +12,10 @@ import MyAttendanceForm from './MyAttendanceForm'
 import AttendanceList from './AttendanceList'
 import Loader from "./Loader";
 
-window.urlBase = "http://127.0.0.1:8000/"
+// window.urlBase = "http://127.0.0.1:8000/"
+window.urlBase = "https://dcac-110-54-166-247.ap.ngrok.io/"
+
+
 
 
 class App extends Component {
